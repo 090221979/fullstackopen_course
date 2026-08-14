@@ -1,5 +1,8 @@
 ```mermaid
-Single page app diagram
+sequenceDiagram
+    participant Browser
+    participant Server
+
 Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/spa
 Server-->>Browser:spa	304	document
 Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
