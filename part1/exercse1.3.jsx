@@ -10,7 +10,7 @@ const Part = (props)=>
       return<p>{props.name} {props.exercise}</p>
     }
 
-function Content({ part1, part2, part3, exercises1, exercises2, exercises3})
+function Content({ part1, part2, part3})
 {
 
   return(
