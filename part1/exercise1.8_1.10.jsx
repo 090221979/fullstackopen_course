@@ -13,10 +13,10 @@ const Button = ({onClick,text})=><button onClick={onClick}>{text}</button>
 
 const StatisticsLine = (props)=>
   {
-    return <p>{props.name} {props.statistic}</p>
+    return <p>{props.name} {props.statistic} {props.percent}</p>
   }
 
-const Statistics = ({positive,nuetral,negative,totalNumber_of_Votes,positivePercentage,averageVotes})=>
+const Statistics = ({positive,nuetral,negative,totalNumber_of_Votes,positivePercentage,averageVotes,percent})=>
   {
     return(
       <div>
@@ -25,9 +25,9 @@ const Statistics = ({positive,nuetral,negative,totalNumber_of_Votes,positivePerc
       <StatisticsLine name='Positive' statistic={positive}/>
       <StatisticsLine name='Neutral' statistic={nuetral}/>
       <StatisticsLine name='Negative' statistic={negative}/>
-      <StatisticsLine name='Total Number of Votes' statistic={totalNumber_of_Votes}/>
-      <StatisticsLine name='Positive Percentage' statistic={positivePercentage}/>
-      <StatisticsLine name='The Average number of Votes' statistic={averageVotes}/>
+      <StatisticsLine name='Total Number of Votes' statistic={totalNumber_of_Votes} percent={percent}/>
+      <StatisticsLine name='Positive Percentage' statistic={positivePercentage} percent={percent}/>
+      <StatisticsLine name='The Average number of Votes' statistic={averageVotes} percent={percent}/>
 
       </div>
       </div>
@@ -48,6 +48,7 @@ export default function App()
   const positivePercentage = totalNumber_of_Votes === 0 ? 0 : (positive/totalNumber_of_Votes) * 100
   const voteTotals = (positive * 1) + (nuetral * 0) + (negative * -1)
   const averageVotes = totalNumber_of_Votes === 0 ? 0 : voteTotals/totalNumber_of_Votes
+  const percent = '%'
   
   return(
     <div>
@@ -57,7 +58,7 @@ export default function App()
         <Button onClick={negativeFeedback} text='negative Vote'/>
         <Button onClick={nuetralFeedback} text='nuetral Vote'/>
       </div>
-      {totalNumber_of_Votes > 0 && <Statistics positive={positive} nuetral={nuetral} negative={negative} totalNumber_of_Votes={totalNumber_of_Votes} positivePercentage={positivePercentage} averageVotes={averageVotes}/>}
+      {totalNumber_of_Votes > 0 && <Statistics positive={positive} nuetral={nuetral} negative={negative} totalNumber_of_Votes={totalNumber_of_Votes} positivePercentage={positivePercentage} averageVotes={averageVotes} percent={percent}/>}
     </div>
   )
 }
